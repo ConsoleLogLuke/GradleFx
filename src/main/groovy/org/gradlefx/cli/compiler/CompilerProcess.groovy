@@ -50,7 +50,7 @@ class AntBasedCompilerProcess implements CompilerProcess {
     private void moveResourcesToFile() {
         List<String> xmlLines = ['<?xml version="1.0" encoding="UTF-8" ?>',
                                  '<flex-config xmlns="http://www.adobe.com/2006/flex-config">']
-        compilerOptions.getArguments().eachWithIndex { option, index ->
+        compilerOptions.asList().eachWithIndex { option, index ->
             if (option != "-include-file") {
                 return
             }
