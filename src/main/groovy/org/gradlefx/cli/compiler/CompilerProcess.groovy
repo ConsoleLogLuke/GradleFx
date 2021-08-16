@@ -50,25 +50,32 @@ class AntBasedCompilerProcess implements CompilerProcess {
     private void moveResourcesToFile() {
         List<String> xmlLines = ['<?xml version="1.0" encoding="UTF-8" ?>',
                                  '<flex-config xmlns="http://www.adobe.com/2006/flex-config">']
+        List<Integer> indicesToRemove = []
         compilerOptions.asList().eachWithIndex { option, index ->
             if (option != "-include-file") {
                 return
             }
-            compilerOptions.getArguments().remove(index)
-            String fileName = compilerOptions.getArguments().remove(index)
-            String filePath = compilerOptions.getArguments().remove(index)
+            String fileName = compilerOptions.getArguments()[index + 1]
+            String filePath = compilerOptions.getArguments()[index + 2]
 
             xmlLines.add("<include-file>")
             xmlLines.add("<name>$fileName</name>")
             xmlLines.add("<path>$filePath</path>")
             xmlLines.add("</include-file>")
+
+            indicesToRemove.add(index)
+            indicesToRemove.add(index + 1)
+            indicesToRemove.add(index + 2)
         }
 
         if (xmlLines.size() == 2) {
             return
         }
-        xmlLines.add("</flex-config>")
+        indicesToRemove.reverseEach {
+            compilerOptions.getArguments().remove(it)
+        }
 
+        xmlLines.add("</flex-config>")
         String xmlString = xmlLines.join("")
         temporaryDir.createTempFile("flex-resources", ".xml").with {
             deleteOnExit()
