@@ -30,3 +30,32 @@ h2. Useful links
 * Help & Support: "http://support.gradlefx.org/":http://support.gradlefx.org/
 * Bug Tracking: "https://github.com/GradleFx/GradleFx/issues":https://github.com/GradleFx/GradleFx/issues
 * Changelog: "https://github.com/GradleFx/GradleFx/blob/master/CHANGELOG.textile":https://github.com/GradleFx/GradleFx/blob/master/CHANGELOG.textile
+
+h2. About this fork
+
+This fork is a drop-in replacement for the original GradleFx plugin. It aims to fix important bugs that were never fixed in the original because of its lack of active maintenance.
+
+h4. Adding the plugin
+
+To add this fork of GradleFx to your Gradle project, remove the original plugin then add the following to the top of your @build.gradle@ file:
+
+bc[gradle].. buildscript {
+    repositories {
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        classpath 'com.github.ConsoleLogLuke:GradleFx:-SNAPSHOT'
+    }
+}
+
+apply plugin: 'gradlefx'
+
+h4. List of fixes
+
+* Fixed Gradle 6 support
+
+h4. List of known bugs to fix
+
+* The plugin doesn't work with Gradle 7
+* Builds fail on Windows if the module contains a large amount of resources
