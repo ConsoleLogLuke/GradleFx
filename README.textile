@@ -51,10 +51,12 @@ bc[gradle].. buildscript {
 
 apply plugin: 'gradlefx'
 
-h4. List of fixes
+h4. List of changes
 
 * Fixed Gradle 6 support
 * Fixed builds failing on Windows if a module contains a large number of resources
+* Updated the Gradle wrapper from Gradle 2.5 to 6.9
+* Updated all dependencies to their latest versions
 
 h4. List of known bugs to fix
 
