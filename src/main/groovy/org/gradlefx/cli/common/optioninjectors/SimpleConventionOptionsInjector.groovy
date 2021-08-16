@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory
  */
 trait SimpleConventionOptionsInjector implements CompilerOptionsRequirement, ProjectRequirement, GradleFxConventionRequirement {
 
-    protected static final Logger LOG = LoggerFactory.getLogger 'gradlefx'
+    private static final Logger LOG = LoggerFactory.getLogger 'gradlefx'
 
     void loadDefaultConfig() {
         compilerOptions.add CompilerOption.LOAD_CONFIG, flexConvention.configPath
