@@ -81,7 +81,7 @@ class ASDoc extends DefaultTask {
             def compilerInstructions = new ASDocInstructions(project).buildInstructions()
             def compilerJar = flexConvention.hasFlexSDK()? CompilerJar.asdoc : CompilerJar.asdoc_legacy
 
-            CompilerProcess compilerProcess = new AntBasedCompilerProcess(ant, compilerJar, new File(flexConvention.flexHome))
+            CompilerProcess compilerProcess = new AntBasedCompilerProcess(ant, compilerJar, new File(flexConvention.flexHome), getTemporaryDir())
             compilerProcess.with {
                 jvmArguments = flexConvention.jvmArguments
                 compilerOptions = compilerInstructions

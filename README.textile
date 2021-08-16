@@ -54,8 +54,8 @@ apply plugin: 'gradlefx'
 h4. List of fixes
 
 * Fixed Gradle 6 support
+* Fixed builds failing on Windows if a module contains a large number of resources
 
 h4. List of known bugs to fix
 
 * The plugin doesn't work with Gradle 7
-* Builds fail on Windows if the module contains a large amount of resources

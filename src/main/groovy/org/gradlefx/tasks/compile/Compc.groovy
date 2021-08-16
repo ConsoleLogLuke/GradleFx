@@ -65,7 +65,7 @@ class Compc extends CompileTaskDelegate {
     }
 
     private runCompileProcess(CompilerSettings requirements) {
-        CompilerProcess compilerProcess = new AntBasedCompilerProcess(task.ant, requirements.compilerJar, new File(flexConvention.flexHome))
+        CompilerProcess compilerProcess = new AntBasedCompilerProcess(task.ant, requirements.compilerJar, new File(flexConvention.flexHome), task.getTemporaryDir())
         compilerProcess.with {
             jvmArguments = flexConvention.jvmArguments
             compilerOptions = requirements.compilerOptions

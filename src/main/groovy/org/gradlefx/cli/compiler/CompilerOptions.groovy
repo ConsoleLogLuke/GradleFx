@@ -5,7 +5,7 @@ package org.gradlefx.cli.compiler
  */
 class CompilerOptions {
 
-    private final List<String> arguments = []
+    final List<String> arguments = []
 
     void each(Closure closure) {
         arguments.each(closure)

@@ -80,7 +80,7 @@ class TestFx extends DefaultTask {
         def compilerInstructions = createCompilerInstructionsBuilder().buildInstructions()
         def compilerJar = flexConvention.hasFlexSDK() ? CompilerJar.mxmlc : CompilerJar.mxmlc_cli
 
-        CompilerProcess compilerProcess = new AntBasedCompilerProcess(ant, compilerJar, new File(flexConvention.flexHome))
+        CompilerProcess compilerProcess = new AntBasedCompilerProcess(ant, compilerJar, new File(flexConvention.flexHome), getTemporaryDir())
         compilerProcess.with {
             jvmArguments = flexConvention.jvmArguments
             compilerOptions = compilerInstructions
