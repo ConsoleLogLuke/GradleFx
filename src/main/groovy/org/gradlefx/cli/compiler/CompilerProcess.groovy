@@ -51,7 +51,7 @@ class AntBasedCompilerProcess implements CompilerProcess {
         List<String> xmlLines = ['<?xml version="1.0" encoding="UTF-8" ?>',
                                  '<flex-config xmlns="http://www.adobe.com/2006/flex-config">']
         List<Integer> indicesToRemove = []
-        compilerOptions.asList().eachWithIndex { option, index ->
+        compilerOptions.getArguments().eachWithIndex { option, index ->
             if (option != "-include-file") {
                 return
             }
